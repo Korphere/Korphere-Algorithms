@@ -1,4 +1,4 @@
-struct Queue {
+pub struct Queue {
     length: i32,
     queue: Vec<i32>,
 }

@@ -1,10 +1,10 @@
 export class RingBuffer extends Object {
-    size;
-    #buffer;
-    start;
-    end;
-    length;
-    constructor(size) {
+    size: number;
+    #buffer: any[];
+    start: number;
+    end: number;
+    length: number;
+    constructor(size: number) {
         super();
         if (size <= 0) {
             throw new Error("Size must be greater than 0");
@@ -16,7 +16,7 @@ export class RingBuffer extends Object {
         this.length = 0;
     }
 
-    write(value) {
+    write(value: any) {
         this.#buffer[this.end] = value;
         this.end = (this.end + 1) % this.size;
         if (this.length < this.size) {
@@ -47,7 +47,7 @@ export class RingBuffer extends Object {
         this.length = 0;
     }
 
-    toString() {
+    override toString() {
         return this.#buffer.toString();
     }
 }

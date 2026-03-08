@@ -1,6 +1,6 @@
 export class Stack extends Object {
-    length;
-    #stack;
+    length: number;
+    #stack: any[];
     constructor(stack = []) {
         super();
         if (!Array.isArray(stack)) {
@@ -10,7 +10,7 @@ export class Stack extends Object {
         this.length = stack.length;
     }
 
-    push(value) {
+    push(value: any) {
         this.#stack.push(value);
         this.length++;
     }
@@ -32,7 +32,7 @@ export class Stack extends Object {
         this.length = 0;
     }
 
-    toString() {
+    override toString() {
         return this.#stack.toString();
     }
 }

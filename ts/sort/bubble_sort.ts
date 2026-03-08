@@ -16,6 +16,20 @@
  */
 
 export default function bubble_sort(target: number[]): number[] {
+    let targetc = [...target];
+    for(let i = 0; i < targetc.length; i++){
+        for(let j = targetc.length - 1; j > i; j-- ){
+            if(targetc[j] < targetc[j-1]){
+                let tmp = targetc[j];
+                targetc[j] = targetc[j-1];
+                targetc[j - 1] =tmp;
+            }
+        }
+    }
+    return targetc;
+}
+
+export function bubble_sort_mut(target: number[]): number[] {
     for(let i = 0; i < target.length; i++){
         for(let j = target.length - 1; j > i; j-- ){
             if(target[j] < target[j-1]){

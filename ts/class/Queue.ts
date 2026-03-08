@@ -1,6 +1,6 @@
 export class Queue extends Object {
-    length;
-    #queue;
+    length: number;
+    #queue: any[];
     constructor(queue = []) {
         super();
         if (!Array.isArray(queue)) {
@@ -10,7 +10,7 @@ export class Queue extends Object {
         this.length = queue.length;
     }
 
-    enqueue(value) {
+    enqueue(value: any) {
         this.#queue.push(value);
         this.length++;
     }
@@ -32,7 +32,7 @@ export class Queue extends Object {
         this.length = 0;
     }
 
-    toString() {
+    override toString() {
         return this.#queue.toString();
     }
 }

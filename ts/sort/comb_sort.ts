@@ -16,6 +16,27 @@
  */
 
 export default function comb_sort(target: number[]): number[] {
+    let targetc = [...target];
+    const shrink_factor = 1.3;
+    let gap = targetc.length;
+    let sorted = false;
+    while (gap > 1 || sorted) {
+        sorted = false;
+        gap = Math.floor(gap / shrink_factor);
+        gap = gap < 1 ? 1 : gap;
+        let i = 0;
+        while (targetc.length > i + gap) {
+            if (targetc[i] > targetc[i + gap]) {
+                [targetc[i], targetc[i + gap]] = [targetc[i + gap], targetc[i]];
+                sorted = true;
+            }
+            i++;
+        }
+    }
+    return targetc;
+}
+
+export function comb_sort_mut(target: number[]): number[] {
     const shrink_factor = 1.3;
     let gap = target.length;
     let sorted = false;

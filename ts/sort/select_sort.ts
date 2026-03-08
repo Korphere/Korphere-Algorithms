@@ -1,4 +1,16 @@
 export default function select_sort(target: number[]): number[] {
+    let targetc = [...target];
+    for (let i = 0; i < targetc.length - 1; i++) {
+        let min = i;
+        for (let j = i + 1; j < targetc.length; j++) {
+            if (targetc[j] < targetc[min]) min = j;
+        }
+        [targetc[i], targetc[min]] = [targetc[min], targetc[i]];
+    }
+    return targetc;
+}
+
+export function select_sort_mut(target: number[]): number[] {
     for (let i = 0; i < target.length - 1; i++) {
         let min = i;
         for (let j = i + 1; j < target.length; j++) {

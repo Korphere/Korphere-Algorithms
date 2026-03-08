@@ -1,5 +1,5 @@
 export class Queue extends Object {
-    length: number;
+    #length: number;
     #queue: any[];
     constructor(queue = []) {
         super();
@@ -7,19 +7,19 @@ export class Queue extends Object {
             throw new Error("Input must be an array");
         }
         this.#queue = queue;
-        this.length = queue.length;
+        this.#length = queue.length;
     }
 
     enqueue(value: any) {
         this.#queue.push(value);
-        this.length++;
+        this.#length++;
     }
 
     dequeue() {
-        if (this.length === 0) {
+        if (this.#length === 0) {
             throw new Error("Queue is empty");
         }
-        this.length--;
+        this.#length--;
         return this.#queue.shift();
     }
 
@@ -27,9 +27,13 @@ export class Queue extends Object {
         return this.#queue;
     }
 
+    get length() {
+        return this.#length;
+    }
+    
     clear() {
         this.#queue = [];
-        this.length = 0;
+        this.#length = 0;
     }
 
     override toString() {

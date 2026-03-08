@@ -1,5 +1,5 @@
 export class Stack extends Object {
-    length;
+    #length;
     #stack;
     constructor(stack = []) {
         super();
@@ -7,19 +7,19 @@ export class Stack extends Object {
             throw new Error("Input must be an array");
         }
         this.#stack = stack;
-        this.length = stack.length;
+        this.#length = stack.length;
     }
 
     push(value) {
         this.#stack.push(value);
-        this.length++;
+        this.#length++;
     }
 
     pop() {
-        if (this.length === 0) {
+        if (this.#length === 0) {
             throw new Error("Stack is empty");
         }
-        this.length--;
+        this.#length--;
         return this.#stack.pop();
     }
 
@@ -27,9 +27,13 @@ export class Stack extends Object {
         return this.#stack;
     }
 
+    get length() {
+        return this.#length;
+    }
+    
     clear() {
         this.#stack = [];
-        this.length = 0;
+        this.#length = 0;
     }
 
     toString() {

@@ -1,29 +1,19 @@
 #[no_mangle]
 pub fn bubble_sort(target: Vec<i32>) -> Vec<i32> {
     let mut targetc = target.clone();
-    for i in 0..targetc.len() {
-        for j in (i+1)..targetc.len() {
-            if targetc[j] < targetc[j-1] {
-                let tmp = targetc[j];
-                targetc[j] = targetc[j-1];
-                targetc[j - 1] =tmp;
-            }
-        }
-    }
+    bubble_sort_mut(&mut targetc);
     targetc
 }
 
 #[no_mangle]
-pub fn bubble_sort_mut(mut target: Vec<i32>) -> Vec<i32> {
-    for i in 0..target.len() {
-        for j in (i+1)..target.len() {
-            if target[j] < target[j-1] {
-                let tmp = target[j];
-                target[j] = target[j-1];
-                target[j - 1] =tmp;
+pub fn bubble_sort_mut(target: &mut [i32]) {
+    let len = target.len();
+    if len < 2 { return; }
+    for i in 0..len {
+        for j in 0..(len - 1 - i) {
+            if target[j] > target[j + 1] {
+                target.swap(j, j + 1);
             }
         }
     }
-    target
 }
-

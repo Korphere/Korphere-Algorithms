@@ -17,7 +17,7 @@
 
 export default function bubble_sort(target) {
     if (!Array.isArray(target)) {
-        return new TypeError("target must be array.")
+        throw new TypeError("target must be array.")
     }
     let targetc = [...target];
     let n = targetc.length;
@@ -37,7 +37,7 @@ export default function bubble_sort(target) {
 
 export function bubble_sort_mut(target) {
     if (!Array.isArray(target)) {
-        return new TypeError("target must be array.")
+        throw new TypeError("target must be array.")
     }
     let n = target.length;
     let swapped;

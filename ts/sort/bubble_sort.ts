@@ -16,28 +16,40 @@
  */
 
 export default function bubble_sort(target: number[]): number[] {
+    if (!Array.isArray(target)) {
+        throw new TypeError("target must be array.")
+    }
     let targetc = [...target];
-    for(let i = 0; i < targetc.length; i++){
-        for(let j = targetc.length - 1; j > i; j-- ){
-            if(targetc[j] < targetc[j-1]){
-                let tmp = targetc[j];
-                targetc[j] = targetc[j-1];
-                targetc[j - 1] =tmp;
+    let n = targetc.length;
+    let swapped;
+    do {
+        swapped = false;
+        for (let i = 1; i < n; i++) {
+            if (targetc[i - 1] > targetc[i]) {
+                [targetc[i - 1], targetc[i]] = [targetc[i], targetc[i - 1]];
+                swapped = true;
             }
         }
-    }
+        n--;
+    } while (swapped);
     return targetc;
 }
 
 export function bubble_sort_mut(target: number[]): number[] {
-    for(let i = 0; i < target.length; i++){
-        for(let j = target.length - 1; j > i; j-- ){
-            if(target[j] < target[j-1]){
-                let tmp = target[j];
-                target[j] = target[j-1];
-                target[j - 1] =tmp;
+    if (!Array.isArray(target)) {
+        throw new TypeError("target must be array.")
+    }
+    let n = target.length;
+    let swapped;
+    do {
+        swapped = false;
+        for (let i = 1; i < n; i++) {
+            if (target[i - 1] > target[i]) {
+                [target[i - 1], target[i]] = [target[i], target[i - 1]];
+                swapped = true;
             }
         }
-    }
+        n--;
+    } while (swapped);
     return target;
 }

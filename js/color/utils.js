@@ -1,15 +1,15 @@
-function calcRelativeLuminance(color) {
+function calcStandardLuminance(color) {
     if(color instanceof RGB) {
         return 0.2126 * color.r + 0.7152 * color.g + 0.0722 * color.b;
     }
 }
 
-function getStandardLuminance(color) {
+function getRelativeLuminance(color) {
     const norm = normalizationRGB0to1(color);
     const rL = toLinear(norm.r);
     const gL = toLinear(norm.g);
     const bL = toLinear(norm.b);
-    return 0.2126 * rL + 0.7152 * gL + 0.0722 * bL;
+    return calcStandardLuminance(new RGB(rL, gL, bL));
 }
 
 function calcAverageColor(color) {

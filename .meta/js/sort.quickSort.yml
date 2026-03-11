@@ -1,0 +1,5 @@
+name: quickSort
+id: sort.quickSort
+description: |
+  quickSort
+dependencies:
